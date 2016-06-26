@@ -193,14 +193,14 @@ class JobController extends Controller
     if(Input::hasFile('file')) {
       $file = $request->file('file');
       $filename = uniqid() . $file->getClientOriginalName();
-      $original = public_path('assets\images\jobs\original\\'.$filename);
-      $thumbnail = public_path('assets\images\jobs\thumbnail\\'.$filename);
-      $resize = public_path('assets\images\jobs\resize\\'.$filename);
-      if (!File::exists(public_path('assets\images\jobs\original')))
+      $original = 'assets\images\jobs\original\\'.$filename;
+      $thumbnail = 'assets\images\jobs\thumbnail\\'.$filename;
+      $resize = 'assets\images\jobs\resize\\'.$filename;
+      if (!File::exists('assets\images\jobs\original'))
       {
-        File::makeDirectory(public_path('assets\images\jobs\original'), $mode = 0777, true, true);
-        if (!File::exists(public_path('assets\images\jobs\thumbnail'))){File::makeDirectory(public_path('assets\images\jobs\thumbnail'), $mode = 0777, true, true);}
-        if (!File::exists(public_path('assets\images\jobs\resize'))){File::makeDirectory(public_path('assets\images\jobs\resize'), $mode = 0777, true, true);}
+        File::makeDirectory('assets\images\jobs\original', $mode = 0777, true, true);
+        if (!File::exists('assets\images\jobs\thumbnail')){File::makeDirectory('assets\images\jobs\thumbnail', $mode = 0777, true, true);}
+        if (!File::exists('assets\images\jobs\resize')){File::makeDirectory('assets\images\jobs\resize', $mode = 0777, true, true);}
       }
       // upload new image
       $img = Image::make($file->getRealPath());
